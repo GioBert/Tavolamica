@@ -1,0 +1,45 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Captures and potentially sensitive diagnostics
+*.har
+*.pcap
+*.pcapng
+*.log
+captures/
+logs/
+
+# Proprietary mobile packages
+*.apk
+*.aab
+*.ipa
+.tools/
+jadx-output/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+node_modules/
+tools/frida-agent/_agent.js
+artifacts/browser/
+.cache/
+tmp/
+output/
+tavolamica-*.json
+Menu_Tavolamica*.pdf
+
+# Editors and OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db

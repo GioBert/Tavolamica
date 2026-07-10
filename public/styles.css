@@ -1,0 +1,79 @@
+:root { color-scheme:light; --ink:#193b3a; --paper:#fff; --accent:#d94f2b; --line:#d8d5cc; --muted:#687573; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:#efede7; font:14px/1.35 system-ui,sans-serif; }
+header { padding:.72rem 1rem; background:var(--ink); color:#fff; }
+.site-intro { width:min(1180px,100%); margin:0 auto; font-size:.92rem; font-weight:650; }
+h2,h3,h4,p { margin-top:0; }
+.eyebrow { margin-bottom:.25rem; color:#e9aa78; letter-spacing:.1em; text-transform:uppercase; font-size:.7rem; font-weight:800; }
+main { width:min(1180px,calc(100% - 1.25rem)); margin:.75rem auto 2rem; }
+.panel { padding:1rem; background:var(--paper); border:1px solid var(--line); box-shadow:0 4px 18px #173b3b12; }
+.narrow { max-width:520px; margin:auto; }
+.hidden { display:none!important; }
+form,.toolbar { display:grid; gap:.6rem; }
+.toolbar { grid-template-columns:minmax(220px,2fr) minmax(145px,1fr) repeat(3,auto); align-items:end; }
+label { display:grid; gap:.2rem; font-weight:700; }
+input,select,button { min-height:36px; padding:.42rem .62rem; border:1px solid var(--line); border-radius:3px; font:inherit; }
+button { border-color:var(--accent); color:#fff; background:var(--accent); font-weight:750; cursor:pointer; }
+button.secondary,.view-option { color:var(--ink); background:#fff; border-color:var(--line); }
+.view-option.active { color:#fff; background:var(--ink); border-color:var(--ink); }
+.viewbar { display:flex; align-items:center; gap:.35rem; margin-top:.65rem; padding-top:.65rem; border-top:1px solid var(--line); }
+.viewbar span { margin-right:.2rem; font-weight:750; }
+#print-menu { margin-left:auto; }
+.muted,.status { color:var(--muted); }
+.error { color:#a32820; }
+.exports { padding:.65rem 0 0; text-align:right; }
+.exports a { color:var(--accent); font-weight:800; }
+.menu-heading { display:grid; grid-template-columns:1fr auto; align-items:end; padding:1rem 0 .55rem; border-bottom:2px solid var(--ink); }
+.menu-heading .eyebrow { grid-column:1/-1; }
+.menu-heading h2 { margin:0; font:700 1.55rem/1.1 Georgia,serif; }
+.menu-heading p:last-child { margin:0; font-weight:750; }
+.category { padding:.75rem 0; border-bottom:1px solid var(--line); break-inside:avoid; }
+.category h3 { margin:0 0 .25rem; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; font-size:.88rem; }
+.dish { display:flex; justify-content:space-between; gap:.8rem; padding:.3rem 0; border-bottom:1px dotted var(--line); break-inside:avoid; }
+.dish h4,.dish p { margin:0; }
+.dish h4 { font-size:.95rem; }
+.dish p { color:var(--muted); font-size:.82rem; }
+.dish span { white-space:nowrap; font-weight:700; }
+body[data-view="dense"] main { width:min(1200px,calc(100% - 1rem)); }
+body[data-view="dense"] #menu { columns:2 360px; column-gap:1.25rem; }
+body[data-view="dense"] .menu-heading { column-span:all; padding:.65rem 0 .35rem; }
+body[data-view="dense"] .category { padding:.42rem 0; }
+body[data-view="dense"] .dish { padding:.13rem 0; font-size:.78rem; line-height:1.18; }
+body[data-view="dense"] .dish h4 { font-size:.82rem; }
+body[data-view="dense"] .dish p { font-size:.72rem; }
+body[data-view="wide"] main { width:min(1500px,calc(100% - 1.25rem)); }
+body[data-view="wide"] #menu { columns:2 520px; column-gap:1.5rem; }
+body[data-view="wide"] .menu-heading { column-span:all; }
+footer { max-width:900px; margin:auto; padding:1rem; text-align:center; color:var(--muted); font-size:.78rem; }
+footer p { margin:0; }
+footer .credits { margin-top:.35rem; font-weight:650; }
+footer a { color:inherit; }
+@media (max-width:850px) { .toolbar { grid-template-columns:1fr 1fr; } .viewbar { flex-wrap:wrap; } #print-menu { margin-left:0; } body[data-view] #menu { columns:auto; display:block; } }
+@media (max-width:620px) { header { padding:.6rem .75rem; } .site-intro { font-size:.82rem; } main { width:min(100% - .65rem,1180px); margin:.35rem auto 1rem; } .panel { padding:.62rem; } .toolbar { grid-template-columns:1fr; gap:.4rem; } .viewbar { gap:.25rem; margin-top:.5rem; padding-top:.5rem; } input,select,button { min-height:34px; } .menu-heading { padding:.7rem 0 .4rem; } .dish { align-items:flex-start; flex-direction:column; gap:.05rem; } footer { padding:.75rem .6rem; font-size:.68rem; } }
+@page {
+  size:A4 portrait;
+  margin:9mm 9mm 17mm;
+  @bottom-center {
+    content:"Progetto indipendente e non ufficiale, realizzato senza finalità commerciali per offrire ai clienti una consultazione rapida e pratica dei menu resi disponibili dal servizio Tavolamica. Marchi, contenuti e servizi appartengono ai rispettivi titolari.\A © 2026 Giovanni Bertozzi · GioBert on GitHub · Sorgente: github.com/GioBert/Tavolamica (AGPL-3.0-or-later)";
+    padding-top:1.5mm;
+    border-top:.2mm solid #aaa;
+    color:#222;
+    font:6.3pt/1.15 system-ui,sans-serif;
+    white-space:pre-wrap;
+  }
+}
+@media print {
+  :root { --ink:#000; --accent:#000; --line:#aaa; --muted:#333; }
+  body,body[data-view="dense"] { background:#fff; font-size:8.5pt; line-height:1.14; }
+  header,.toolbar,.viewbar,.exports,.status,.site-footer { display:none!important; }
+  main,body[data-view="dense"] main { width:auto; margin:0; }
+  .panel { padding:0; border:0; box-shadow:none; }
+  body[data-view="dense"] #menu { columns:2; column-gap:7mm; }
+  body[data-view="dense"] .menu-heading { padding:0 0 2mm; margin-bottom:1mm; }
+  body[data-view="dense"] .menu-heading h2 { font-size:15pt; }
+  body[data-view="dense"] .category { padding:1.2mm 0; }
+  body[data-view="dense"] .category h3 { margin-bottom:.6mm; font-size:8.5pt; }
+  body[data-view="dense"] .dish { padding:.35mm 0; font-size:7.5pt; }
+  body[data-view="dense"] .dish h4 { font-size:7.8pt; }
+  body[data-view="dense"] .dish p { font-size:6.8pt; }
+}

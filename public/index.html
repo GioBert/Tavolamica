@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Menu Tavolamica</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <p class="site-intro">Consulta rapidamente il menu del tuo ristorante preferito usando il tuo account Tavolamica.</p>
+  </header>
+
+  <main>
+    <section id="login-panel" class="panel narrow">
+      <h2>Accedi</h2>
+      <p class="muted">Le credenziali vengono inoltrate a Tavolamica e non sono salvate su disco.</p>
+      <form id="login-form">
+        <label>Email<input id="email" type="email" autocomplete="username" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit">Entra</button>
+      </form>
+    </section>
+
+    <section id="menu-panel" class="panel hidden">
+      <div class="toolbar">
+        <label>Ristorante preferito<select id="restaurant"></select></label>
+        <label>Data<input id="date" type="date" required></label>
+        <button id="load-menu" type="button">Mostra menu</button>
+        <button id="save-preferred" class="secondary" type="button">Salva preferito</button>
+        <button id="logout" class="secondary" type="button">Esci</button>
+      </div>
+      <div class="viewbar" aria-label="Formato del menu">
+        <span>Vista</span>
+        <button type="button" class="view-option" data-view="dense">Densa</button>
+        <button type="button" class="view-option" data-view="normal">Normale</button>
+        <button type="button" class="view-option" data-view="wide">Larga</button>
+        <button id="print-menu" type="button">Stampa / salva PDF</button>
+      </div>
+      <div id="exports" class="exports hidden"></div>
+      <p id="status" class="status" role="status"></p>
+      <article id="menu"></article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="disclaimer">Progetto indipendente e non ufficiale, realizzato senza finalità commerciali per offrire ai clienti una consultazione rapida e pratica dei menu resi disponibili dal servizio Tavolamica. Marchi, contenuti e servizi appartengono ai rispettivi titolari.</p>
+    <p class="credits">© 2026 Giovanni Bertozzi · <a href="https://github.com/GioBert">GioBert on GitHub</a> · <a href="https://github.com/GioBert/Tavolamica">Codice sorgente AGPL</a></p>
+  </footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

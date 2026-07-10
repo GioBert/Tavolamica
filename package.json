@@ -1,0 +1,21 @@
+{
+  "name": "tavolamica-menu",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Client locale e API riutilizzabile per i menu Tavolamica",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/server.js",
+    "test": "node --test",
+    "api:restaurants": "node tools/list-restaurants.mjs",
+    "visual:check": "node tools/web-preview.mjs",
+    "visual:open": "node tools/web-preview.mjs --headed"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}
