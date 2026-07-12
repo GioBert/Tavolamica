@@ -1,0 +1,36 @@
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  repository-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject tracked files larger than 10 MiB
+        shell: bash
+        run: |
+          oversized=0
+          while IFS= read -r -d '' file; do
+            size=$(stat -c%s "$file")
+            if (( size > 10485760 )); then
+              echo "::error file=$file::$file is $size bytes (limit: 10485760)"
+              oversized=1
+            fi
+          done < <(git ls-files -z)
+          exit "$oversized"
+      - name: Scan for secrets
+        uses: trufflesecurity/trufflehog@v3.95.1
+        with:
+          extra_args: --results=verified,unknown
