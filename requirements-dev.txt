@@ -1,2 +1,2 @@
-pypdf>=5,<7
+pypdf>=6.15.0,<7
 pypdfium2>=5,<6
