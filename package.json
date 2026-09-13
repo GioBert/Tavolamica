@@ -16,6 +16,6 @@
   },
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "playwright": "^1.61.1"
+    "playwright": "^1.63.0"
   }
 }
